@@ -8,8 +8,24 @@ def main():
 
   # Check if connection was successful
   if (db):
-    # Carry out normal procedure
     print "Connection successful"
+
+    #get a cursor
+    cursor = db.cursor()
+
+    # Truncate table
+    cursor.execute('truncate biztanleak')
+    db.commit()
+    print "Table truncated."
+
+    # Load csv file to MySQL
+    agindua = "LOAD DATA LOCAL INFILE '" + settings.file_path + "'   INTO TABLE biztanleak  FIELDS TERMINATED BY '#' ENCLOSED BY '\"' LINES TERMINATED BY '\r\n' IGNORE 1 LINES;"
+    cursor.execute(agindua)
+    db.commit()
+
+    cursor.close()
+    db.close()
+    print "Table loaded."
   else:
     # Terminate
     print "Connection unsuccessful"
