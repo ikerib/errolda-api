@@ -1,0 +1,8 @@
+mysql = dict(
+        db_host = 'localhost',
+        db_database = 'DATABASE_NA;E',
+        db_user = 'DATABASE_USER',
+        db_passwd = 'DATABASE_USER'
+)
+
+file_path = "/home/Downloads/CSV_FILE"
